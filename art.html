@@ -5,7 +5,12 @@
     <meta name="description" content="Gallery of Art">
     <meta name="keywords" content="art gallery">
     <style>
-        /* CSS for gallery layout */
+        /* CSS for gallery layout and gradient background */
+        body {
+            background: linear-gradient(to bottom right, #0c1e52, #a87eb3); /* Gradient from dark blue to light purple */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
