@@ -16,6 +16,7 @@
             font-family: Arial, sans-serif; /* Font family */
             text-align: center; /* Center text horizontally */
             display: flex;
+            flex-direction: column; /* Stack elements vertically */
             justify-content: center;
             align-items: center;
             overflow: hidden; /* Prevent scrolling */
@@ -39,19 +40,20 @@
     </style>
 </head>
 <body>
-    <!-- Audio element for playing the song on loop -->
-    <audio autoplay loop>
-        <source src="Good vibes.m4a" type="audio/mp4">
-    </audio>
-
     <h1>Random Stuff by ENDR</h1>
 
-    <!-- Button container -->
+    <!-- Button container below the text -->
     <div class="button-container">
         <button class="button" onclick="window.location.href='new.html'">New</button>
         <button class="button" onclick="window.location.href='art.html'">Art</button>
         <button class="button" onclick="window.location.href='music.html'">Music</button>
         <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
     </div>
+
+    <!-- Audio element for playing the song on loop -->
+    <audio autoplay loop>
+        <source src="Good vibes.m4a" type="audio/mp4">
+        Your browser does not support the audio element.
+    </audio>
 </body>
 </html>
