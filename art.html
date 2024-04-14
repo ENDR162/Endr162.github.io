@@ -10,17 +10,23 @@
             background: linear-gradient(to bottom right, #0c1e52, #a87eb3); /* Gradient from dark blue to light purple */
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
+            background-attachment: fixed; /* Background stays in place when scrolling */
         }
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
             grid-gap: 10px;
             padding: 20px;
+            margin-top: 80px; /* Adjust top margin to prevent overlap with h1 */
         }
         .gallery img {
             width: 100%;
             height: auto;
             border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px; /* Add some space at the top */
         }
     </style>
 </head>
