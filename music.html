@@ -39,13 +39,17 @@
 <body>
     <h1>Music by ENDR</h1>
 
+    <!-- Link to the YouTube playlist -->
+    <p>Check out our latest music on <a href="https://youtube.com/playlist?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx&si=8JvcApgue_F3A4nI" target="_blank">YouTube Playlist</a></p>
+
     <!-- List of songs with controls -->
     <div id="songs">
         <div class="song">
-            <audio src="https://github.com/ENDR162/Endr162.github.io/raw/d9724c9d4e15672451b27c88274769025354e694/Music/Good%20vibes.m4a" controls preload="none"></audio>
+            <!-- Embedded YouTube playlist -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
             <div class="controls">
-                <button class="button play">Play</button>
-                <button class="button stop">Stop</button>
+                <!-- Buttons for play and stop (optional) -->
+                <!-- Add your play and stop buttons here if needed -->
             </div>
         </div>
     </div>
@@ -58,24 +62,7 @@
         <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
     </div>
 
-    <!-- JavaScript for play and stop buttons -->
-    <script>
-        const playButtons = document.querySelectorAll('.play');
-        playButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const audio = button.parentElement.previousElementSibling;
-                audio.play();
-            });
-        });
-
-        const stopButtons = document.querySelectorAll('.stop');
-        stopButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const audio = button.parentElement.previousElementSibling;
-                audio.pause();
-                audio.currentTime = 0;
-            });
-        });
-    </script>
+    <!-- JavaScript for play and stop buttons (if needed) -->
+    <!-- Add your JavaScript code here if you have play and stop buttons -->
 </body>
 </html>
