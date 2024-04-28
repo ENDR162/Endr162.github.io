@@ -23,10 +23,32 @@
             width: 100%;
             height: auto;
             border-radius: 5px;
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
-        h1 {
-            text-align: center;
-            margin-top: 20px; /* Add some space at the top */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensure it appears above other elements */
+        }
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
     </style>
 </head>
@@ -36,6 +58,12 @@
     <!-- Gallery container -->
     <div class="gallery" id="gallery">
         <!-- Images will be dynamically loaded here -->
+    </div>
+
+    <!-- Fullscreen view container -->
+    <div class="fullscreen" id="fullscreen">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <img id="fullscreen-img">
     </div>
 
     <script>
@@ -51,10 +79,6 @@
             "IMG_0276.jpeg",
             "IMG_0277.jpeg",
             "IMG_0804.jpg",
-            "IMG_7966.jpeg",
-            "IMG_7967.jpeg",
-            "QueenGay.jpeg",
-            "Queen_Gay 2.jpeg"
         ];
 
         // Sort images by most recent file date
@@ -68,8 +92,21 @@
             var img = document.createElement("img");
             img.src = fileName;
             img.alt = "Image";
+            img.onclick = function() { openFullscreen(fileName); }; // Open fullscreen view on click
             gallery.appendChild(img);
         });
+
+        // Function to open fullscreen view
+        function openFullscreen(fileName) {
+            var fullscreenImg = document.getElementById("fullscreen-img");
+            fullscreenImg.src = fileName;
+            document.getElementById("fullscreen").style.display = "flex"; // Show fullscreen view
+        }
+
+        // Function to close fullscreen view
+        function closeFullscreen() {
+            document.getElementById("fullscreen").style.display = "none"; // Hide fullscreen view
+        }
     </script>
 </body>
 </html>
