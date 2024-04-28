@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Music by ENDR</title>
     <style>
         /* CSS for music player layout */
         body {
@@ -14,18 +14,6 @@
         }
         .song {
             margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .song img {
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-        .song audio {
-            margin-right: 10px;
         }
         .controls {
             display: flex;
@@ -49,80 +37,45 @@
     </style>
 </head>
 <body>
-    <h1>Music Player</h1>
+    <h1>Music by ENDR</h1>
 
-    <!-- List of songs with images and controls -->
-    <div id="songs"></div>
+    <!-- List of songs with controls -->
+    <div id="songs">
+        <div class="song">
+            <audio src="https://github.com/ENDR162/Endr162.github.io/blob/main/Music/Good%20vibes.m4a?raw=true" controls preload="none"></audio>
+            <div class="controls">
+                <button class="button play">Play</button>
+                <button class="button stop">Stop</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Button container for navigation -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    </div>
+
+    <!-- JavaScript for play and stop buttons -->
     <script>
-        // Fetch songs and images from the Music folder using GitHub API
-        fetch('https://api.github.com/repos/ENDR162/Endr162.github.io/contents/Music')
-            .then(response => response.json())
-            .then(data => {
-                // Filter out image and audio files
-                const imageFiles = data.filter(file => file.type === 'file' && file.name.match(/\.(jpeg|jpg|png|gif)$/));
-                const audioFiles = data.filter(file => file.type === 'file' && file.name.match(/\.(mp3|mp4|wav)$/));
+        const playButtons = document.querySelectorAll('.play');
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const audio = button.parentElement.previousElementSibling;
+                audio.play();
+            });
+        });
 
-                // Match audio files with corresponding image files based on filename
-                const songs = audioFiles.map(audio => {
-                    const matchingImage = imageFiles.find(image => image.name.split('.')[0] === audio.name.split('.')[0]);
-                    return { audio, image: matchingImage };
-                });
-
-                // Create song elements and append to the document
-                const songsContainer = document.getElementById('songs');
-                songs.forEach(song => {
-                    const songDiv = document.createElement('div');
-                    songDiv.classList.add('song');
-
-                    const img = document.createElement('img');
-                    img.src = song.image.download_url;
-                    img.alt = song.audio.name.split('.')[0];
-                    songDiv.appendChild(img);
-
-                    const audio = document.createElement('audio');
-                    audio.src = song.audio.download_url;
-                    audio.controls = true;
-                    audio.preload = 'none';
-                    songDiv.appendChild(audio);
-
-                    const controlsDiv = document.createElement('div');
-                    controlsDiv.classList.add('controls');
-
-                    const playButton = document.createElement('button');
-                    playButton.classList.add('button', 'play');
-                    playButton.textContent = 'Play';
-                    controlsDiv.appendChild(playButton);
-
-                    const stopButton = document.createElement('button');
-                    stopButton.classList.add('button', 'stop');
-                    stopButton.textContent = 'Stop';
-                    controlsDiv.appendChild(stopButton);
-
-                    songDiv.appendChild(controlsDiv);
-
-                    songsContainer.appendChild(songDiv);
-                });
-
-                // Add event listeners for play and stop buttons
-                const playButtons = document.querySelectorAll('.play');
-                playButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const audio = button.parentElement.previousElementSibling;
-                        audio.play();
-                    });
-                });
-
-                const stopButtons = document.querySelectorAll('.stop');
-                stopButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const audio = button.parentElement.previousElementSibling;
-                        audio.pause();
-                        audio.currentTime = 0;
-                    });
-                });
-            })
-            .catch(error => console.error('Error fetching songs:', error));
+        const stopButtons = document.querySelectorAll('.stop');
+        stopButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const audio = button.parentElement.previousElementSibling;
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        });
     </script>
 </body>
 </html>
