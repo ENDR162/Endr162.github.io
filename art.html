@@ -34,12 +34,42 @@
     <h1>Art Gallery</h1>
 
     <!-- Gallery container -->
-    <div class="gallery">
-        <!-- Add your images here -->
-        <img src="Queen_Gay 2.jpeg" alt="Image 1">
-        <img src="IMG_0804.jpg" alt="Image 2">
-        <img src="Amethyst_Canyon.jpg" alt="Image 3">
-        <!-- Add more images as needed -->
+    <div class="gallery" id="gallery">
+        <!-- Images will be dynamically loaded here -->
     </div>
+
+    <script>
+        // Array of image file names
+        var imageFiles = [
+            "IMG_0269.jpeg",
+            "IMG_0270.jpeg",
+            "IMG_0271.jpeg",
+            "IMG_0272.jpeg",
+            "IMG_0273.jpeg",
+            "IMG_0274.jpeg",
+            "IMG_0275.jpeg",
+            "IMG_0276.jpeg",
+            "IMG_0277.jpeg",
+            "IMG_0804.jpg",
+            "IMG_7966.jpeg",
+            "IMG_7967.jpeg",
+            "QueenGay.jpeg",
+            "Queen_Gay 2.jpeg"
+        ];
+
+        // Sort images by most recent file date
+        imageFiles.sort(function(a, b) {
+            return new Date(b.split("2 weeks ago")[1]) - new Date(a.split("2 weeks ago")[1]);
+        });
+
+        // Load images into the gallery
+        var gallery = document.getElementById("gallery");
+        imageFiles.forEach(function(fileName) {
+            var img = document.createElement("img");
+            img.src = fileName;
+            img.alt = "Image";
+            gallery.appendChild(img);
+        });
+    </script>
 </body>
 </html>
