@@ -72,8 +72,8 @@
     </div>
 
     <script>
-        // Fetch images from the Art folder
-        fetch('Art')
+        // Fetch images from the Art folder using GitHub API
+        fetch('https://api.github.com/repos/ENDR162/Endr162.github.io/contents/Art')
             .then(response => response.json())
             .then(data => {
                 // Filter out non-image files
