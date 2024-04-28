@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <p style="text-align: center;"><title>Art Gallery</title></p>
+    <title>Art Gallery</title>
     <meta name="description" content="Gallery of Art">
     <meta name="keywords" content="art gallery">
     <style>
@@ -11,19 +11,25 @@
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
             background-attachment: fixed; /* Background stays in place when scrolling */
+            text-align: center; /* Center align text */
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
-            grid-gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout with minimum width of 200px */
+            grid-auto-rows: 200px; /* Set row height to 200px */
+            grid-gap: 10px; /* Add gap between grid items */
             padding: 20px;
             margin-top: 80px; /* Adjust top margin to prevent overlap with h1 */
         }
         .gallery img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover; /* Ensure images cover the grid cells */
             border-radius: 5px;
             cursor: pointer; /* Change cursor to pointer on hover */
+        }
+        h1 {
+            margin-top: 20px; /* Add some space at the top */
         }
         .fullscreen {
             position: fixed;
@@ -79,6 +85,10 @@
             "IMG_0276.jpeg",
             "IMG_0277.jpeg",
             "IMG_0804.jpg",
+            "IMG_7966.jpeg",
+            "IMG_7967.jpeg",
+            "QueenGay.jpeg",
+            "Queen_Gay 2.jpeg"
         ];
 
         // Sort images by most recent file date
