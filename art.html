@@ -55,10 +55,35 @@
             font-size: 24px;
             cursor: pointer; /* Change cursor to pointer on hover */
         }
+        /* Button styling */
+        .button-container {
+            margin-top: 20px; /* Add some space between buttons and text */
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff; /* Blue color for buttons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Darker shade of blue on hover */
+        }
     </style>
 </head>
 <body>
     <h1>Art Gallery</h1>
+
+    <!-- Button container below the text -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    </div>
 
     <!-- Gallery container -->
     <div class="gallery" id="gallery">
