@@ -72,40 +72,34 @@
     </div>
 
     <script>
-        // Array of image file names
-        var imageFiles = [
-            "IMG_0269.jpeg",
-            "IMG_0270.jpeg",
-            "IMG_0271.jpeg",
-            "IMG_0272.jpeg",
-            "IMG_0273.jpeg",
-            "IMG_0274.jpeg",
-            "IMG_0275.jpeg",
-            "IMG_0276.jpeg",
-            "IMG_0277.jpeg",
-            "IMG_0804.jpg",
+        // Fetch images from the Art folder
+        fetch('Art')
+            .then(response => response.json())
+            .then(data => {
+                // Filter out non-image files
+                const imageFiles = data.filter(file => file.type === 'file' && file.name.match(/\.(jpeg|jpg|png|gif)$/));
 
-        ];
+                // Sort images by most recent file date
+                imageFiles.sort(function(a, b) {
+                    return new Date(b.last_modified) - new Date(a.last_modified);
+                });
 
-        // Sort images by most recent file date
-        imageFiles.sort(function(a, b) {
-            return new Date(b.split("2 weeks ago")[1]) - new Date(a.split("2 weeks ago")[1]);
-        });
-
-        // Load images into the gallery
-        var gallery = document.getElementById("gallery");
-        imageFiles.forEach(function(fileName) {
-            var img = document.createElement("img");
-            img.src = fileName;
-            img.alt = "Image";
-            img.onclick = function() { openFullscreen(fileName); }; // Open fullscreen view on click
-            gallery.appendChild(img);
-        });
+                // Load images into the gallery
+                var gallery = document.getElementById("gallery");
+                imageFiles.forEach(function(image) {
+                    var img = document.createElement("img");
+                    img.src = image.download_url;
+                    img.alt = image.name;
+                    img.onclick = function() { openFullscreen(image.download_url); }; // Open fullscreen view on click
+                    gallery.appendChild(img);
+                });
+            })
+            .catch(error => console.error('Error fetching images:', error));
 
         // Function to open fullscreen view
-        function openFullscreen(fileName) {
+        function openFullscreen(imageUrl) {
             var fullscreenImg = document.getElementById("fullscreen-img");
-            fullscreenImg.src = fileName;
+            fullscreenImg.src = imageUrl;
             document.getElementById("fullscreen").style.display = "flex"; // Show fullscreen view
         }
 
