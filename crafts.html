@@ -96,13 +96,10 @@
         <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
     </div>
 
-    <!-- YouTube video -->
+    <!-- YouTube playlist -->
     <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/45Lr7bakqKM" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=_z6IxMu-8FIRf6v_&amp;list=PLdhfBqNVeBmPFZlU6sYzMj2q9P14hiDKJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-
-    <!-- Link to the YouTube playlist -->
-    <p>Explore more craft projects on <a href="https://www.youtube.com/playlist?list=PLdhfBqNVeBmPFZlU6sYzMj2q9P14hiDKJ" target="_blank">YouTube Playlist</a></p>
 
     <!-- Gallery container -->
     <div class="gallery" id="gallery">
@@ -117,4 +114,40 @@
 
     <script>
         // Fetch images from the Crafts folder using GitHub API
-        fetch('https://api.github.com
+        fetch('https://api.github.com/repos/ENDR162/Endr162.github.io/contents/Craft')
+            .then(response => response.json())
+            .then(data => {
+                // Filter out non-image files
+                const imageFiles = data.filter(file => file.type === 'file' && file.name.match(/\.(jpeg|jpg|png|gif)$/));
+
+                // Sort images by most recent file date
+                imageFiles.sort(function(a, b) {
+                    return new Date(b.last_modified) - new Date(a.last_modified);
+                });
+
+                // Load images into the gallery
+                var gallery = document.getElementById("gallery");
+                imageFiles.forEach(function(image) {
+                    var img = document.createElement("img");
+                    img.src = image.download_url;
+                    img.alt = image.name;
+                    img.onclick = function() { openFullscreen(image.download_url); }; // Open fullscreen view on click
+                    gallery.appendChild(img);
+                });
+            })
+            .catch(error => console.error('Error fetching images:', error));
+
+        // Function to open fullscreen view
+        function openFullscreen(imageUrl) {
+            var fullscreenImg = document.getElementById("fullscreen-img");
+            fullscreenImg.src = imageUrl;
+            document.getElementById("fullscreen").style.display = "flex"; // Show fullscreen view
+        }
+
+        // Function to close fullscreen view
+        function closeFullscreen() {
+            document.getElementById("fullscreen").style.display = "none"; // Hide fullscreen view
+        }
+    </script>
+</body>
+</html>
