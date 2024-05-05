@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Stuff by ENDR</title>
+    <style>
+        /* CSS for page layout */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #0c1e52, #a87eb3); /* Gradient from dark blue to light purple */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .latest-art {
+            margin-bottom: 20px;
+        }
+        .latest-art img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .youtube-player {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Stuff by ENDR</h1>
+
+    <!-- Latest Art Section -->
+    <div class="content">
+        <h2>Latest Art</h2>
+        <div class="latest-art">
+            <!-- Latest Art Image -->
+            <img src="" alt="Latest Art Image" id="latest-art-image">
+        </div>
+    </div>
+
+    <!-- YouTube Videos Section -->
+    <div class="content">
+        <h2>YouTube Videos</h2>
+        <div class="youtube-player">
+            <!-- Embedded YouTube Playlist -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Button container for navigation -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    </div>
+
+    <!-- JavaScript to fetch latest art image -->
+    <script>
+        fetch('https://api.github.com/repos/ENDR162/Endr162.github.io/contents/Art')
+            .then(response => response.json())
+            .then(data => {
+                const imageFiles = data.filter(file => file.type === 'file' && file.name.match(/\.(jpeg|jpg|png|gif)$/));
+                const latestImage = imageFiles[0]; // Get the latest image file
+
+                if (latestImage) {
+                    const latestArtImage = document.getElementById('latest-art-image');
+                    latestArtImage.src = latestImage.download_url;
+                }
+            })
+            .catch(error => console.error('Error fetching latest art:', error));
+    </script>
+</body>
+</html>
