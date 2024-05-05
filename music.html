@@ -13,27 +13,15 @@
             padding: 20px;
             text-align: center;
         }
-        .container {
-            max-width: 800px; /* Limit content width */
-            margin: 0 auto; /* Center content horizontally */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for content */
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .song {
+        h1 {
             margin-bottom: 20px;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
+            color: white;
         }
         .button-container {
-            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 20px;
         }
         .button {
             padding: 10px 20px;
@@ -56,30 +44,27 @@
     </style>
 </head>
 <body>
-       <h1>Music by ENDR</h1>
-    <div class="container">
-        <!-- Button container for navigation -->
-        <div class="button-container">
-            <button class="button" onclick="window.location.href='new.html'">New</button>
-            <button class="button" onclick="window.location.href='art.html'">Art</button>
-            <button class="button" onclick="window.location.href='music.html'">Music</button>
-            <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
-        </div>
+    <h1>Music by ENDR</h1>
 
-     
+    <!-- Button container for navigation -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    </div>
 
-        <!-- Link to the YouTube playlist -->
-        <p>Check out our latest music on <a href="https://youtube.com/playlist?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx&si=8JvcApgue_F3A4nI" target="_blank">YouTube Playlist</a></p>
+    <!-- Link to the YouTube playlist -->
+    <p>Check out our latest music on <a href="https://youtube.com/playlist?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx&si=8JvcApgue_F3A4nI" target="_blank">YouTube Playlist</a></p>
 
-        <!-- List of songs with controls -->
-        <div id="songs">
-            <div class="song">
-                <!-- Embedded YouTube playlist -->
-                <iframe class="youtube-player" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
-                <div class="controls">
-                    <!-- Buttons for play and stop (optional) -->
-                    <!-- Add your play and stop buttons here if needed -->
-                </div>
+    <!-- List of songs with controls -->
+    <div id="songs">
+        <div class="song">
+            <!-- Embedded YouTube playlist -->
+            <iframe class="youtube-player" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
+            <div class="controls">
+                <!-- Buttons for play and stop (optional) -->
+                <!-- Add your play and stop buttons here if needed -->
             </div>
         </div>
     </div>
