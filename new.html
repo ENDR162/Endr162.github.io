@@ -16,11 +16,15 @@
         .content {
             margin-top: 20px;
         }
-        .latest-art {
+        .button-container {
             margin-bottom: 20px;
         }
+        .latest-art {
+            margin: 0 auto 20px; /* Center image and add bottom margin */
+            max-width: 66%; /* Set image width to 2/3 of the screen */
+        }
         .latest-art img {
-            max-width: 100%;
+            width: 100%; /* Ensure image fills its container */
             border-radius: 5px;
         }
         .youtube-player {
@@ -29,16 +33,15 @@
     </style>
 </head>
 <body>
-    <h1>New Stuff by ENDR</h1>
-
-    <!-- Latest Art Section -->
-    <div class="content">
-        <h2>Latest Art</h2>
-        <div class="latest-art">
-            <!-- Latest Art Image -->
-            <img src="" alt="Latest Art Image" id="latest-art-image">
-        </div>
+    <!-- Button container for navigation -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
     </div>
+
+    <h1>New Stuff by ENDR</h1>
 
     <!-- YouTube Videos Section -->
     <div class="content">
@@ -49,12 +52,13 @@
         </div>
     </div>
 
-    <!-- Button container for navigation -->
-    <div class="button-container">
-        <button class="button" onclick="window.location.href='new.html'">New</button>
-        <button class="button" onclick="window.location.href='art.html'">Art</button>
-        <button class="button" onclick="window.location.href='music.html'">Music</button>
-        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    <!-- Latest Art Section -->
+    <div class="content">
+        <h2>Latest Art</h2>
+        <div class="latest-art">
+            <!-- Latest Art Image -->
+            <img src="" alt="Latest Art Image" id="latest-art-image">
+        </div>
     </div>
 
     <!-- JavaScript to fetch latest art image -->
