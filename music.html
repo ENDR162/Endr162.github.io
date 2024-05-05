@@ -22,6 +22,12 @@
             align-items: center;
             margin-top: 10px;
         }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .button {
             padding: 10px 20px;
             margin: 0 10px;
@@ -35,9 +41,21 @@
         .button:hover {
             background-color: #0056b3;
         }
+        .youtube-player {
+            margin-bottom: 20px;
+            width: 66%; /* Set width to 2/3 of the screen */
+        }
     </style>
 </head>
 <body>
+    <!-- Button container for navigation -->
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='new.html'">New</button>
+        <button class="button" onclick="window.location.href='art.html'">Art</button>
+        <button class="button" onclick="window.location.href='music.html'">Music</button>
+        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
+    </div>
+
     <h1>Music by ENDR</h1>
 
     <!-- Link to the YouTube playlist -->
@@ -47,20 +65,12 @@
     <div id="songs">
         <div class="song">
             <!-- Embedded YouTube playlist -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
+            <iframe class="youtube-player" src="https://www.youtube.com/embed/videoseries?list=PLdhfBqNVeBmOewAEuCdMKP6E_jUX5B7Fx" frameborder="0" allowfullscreen></iframe>
             <div class="controls">
                 <!-- Buttons for play and stop (optional) -->
                 <!-- Add your play and stop buttons here if needed -->
             </div>
         </div>
-    </div>
-
-    <!-- Button container for navigation -->
-    <div class="button-container">
-        <button class="button" onclick="window.location.href='new.html'">New</button>
-        <button class="button" onclick="window.location.href='art.html'">Art</button>
-        <button class="button" onclick="window.location.href='music.html'">Music</button>
-        <button class="button" onclick="window.location.href='crafts.html'">Crafts</button>
     </div>
 
     <!-- JavaScript for play and stop buttons (if needed) -->
